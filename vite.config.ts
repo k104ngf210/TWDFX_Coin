@@ -7,7 +7,7 @@ import {defineConfig} from 'vite';
 export default defineConfig(() => {
   return {
     // 配合 GitHub Pages 專案子路徑部署（https://<user>.github.io/TWDFX_Coin/）
-    base: '/TWDFX_Coin/',
+    base: process.env.GITHUB_ACTIONS ? '/TWDFX_Coin/' : '/',
     plugins: [
       react(),
       tailwindcss(),
