@@ -1,0 +1,6 @@
+{
+  "name": "TWDFX 匯率通",
+  "description": "台幣即時匯率行情、歷史走勢分析、台灣各銀行牌告匯率比價與手續費試算系統",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

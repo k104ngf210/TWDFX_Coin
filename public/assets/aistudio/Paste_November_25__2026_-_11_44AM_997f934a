@@ -1,0 +1,1327 @@
+<!DOCTYPE html><html class="dark" lang="zh-Hant"><head></head><body class="bg-surface font-body text-on-surface antialiased selection:bg-primary/30 selection:text-white"><svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>
+@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+
+@keyframes darkBorderPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(15, 98, 254, 0.8), 0 0 15px rgba(15, 98, 254, 0.3), inset 0 0 20px rgba(15, 98, 254, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 0 1.5px rgba(69, 137, 255, 1), 0 0 26px rgba(69, 137, 255, 0.55), inset 0 0 28px rgba(69, 137, 255, 0.22);
+  }
+}
+
+.bank-row-selected {
+  animation: darkBorderPulse 2.4s ease-in-out infinite;
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes liveDotPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 6px rgba(52, 211, 153, 0);
+  }
+}
+
+.live-pulse-dot {
+  animation: liveDotPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.rotating-refresh {
+  animation: spinOnce 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes spinOnce {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bank-row-selected {
+    animation: none !important;
+    box-shadow: 0 0 0 1px rgba(69, 137, 255, 0.9), 0 0 16px rgba(15, 98, 254, 0.35), inset 0 0 20px rgba(15, 98, 254, 0.15) !important;
+  }
+  .live-pulse-dot, .rotating-refresh {
+    animation: none !important;
+  }
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-dim": "#071424",
+          "on-primary-container": "#f3f3ff",
+          "surface-bright": "#2e3a4b",
+          "surface-container-highest": "#2a3547",
+          "secondary-fixed-dim": "#4edea3",
+          "inverse-surface": "#d7e3fa",
+          "primary-container": "#0f62fe",
+          "error": "#ffb4ab",
+          "surface-container-high": "#1f2b3c",
+          "on-primary-fixed": "#00174c",
+          "tertiary-container": "#064e3b",
+          "on-secondary-fixed": "#002113",
+          "tertiary": "#34d399",
+          "primary": "#3b82f6",
+          "on-secondary-container": "#00311f",
+          "surface": "#090d16",
+          "surface-container-lowest": "#060910",
+          "on-background": "#f1f5f9",
+          "on-tertiary-fixed-variant": "#930013",
+          "tertiary-fixed": "#ffdad7",
+          "secondary": "#4edea3",
+          "inverse-primary": "#0052dd",
+          "surface-container-low": "#0d121f",
+          "surface-variant": "#182236",
+          "surface-tint": "#3b82f6",
+          "on-primary-fixed-variant": "#003da9",
+          "error-container": "#4c0519",
+          "inverse-on-surface": "#253142",
+          "on-secondary-fixed-variant": "#005236",
+          "on-tertiary": "#003824",
+          "on-tertiary-fixed": "#410004",
+          "on-tertiary-container": "#34d399",
+          "on-surface-variant": "#94a3b8",
+          "secondary-fixed": "#6ffbbe",
+          "on-error-container": "#f87171",
+          "outline": "#2a3b58",
+          "on-surface": "#f1f5f9",
+          "outline-variant": "#223048",
+          "on-error": "#690005",
+          "surface-container": "#131c2e",
+          "primary-fixed": "#dbe1ff",
+          "secondary-container": "#00a572",
+          "primary-fixed-dim": "#b4c5ff",
+          "tertiary-fixed-dim": "#ffb3ad",
+          "on-primary": "#ffffff",
+          "background": "#090d16",
+          "on-secondary": "#003824"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "fontFamily": {
+          "body": ["Inter", "IBM Plex Sans", "sans-serif"],
+          "headline": ["Inter", "IBM Plex Sans", "sans-serif"],
+          "display": ["Inter", "IBM Plex Sans", "sans-serif"],
+          "label": ["Inter", "IBM Plex Sans", "sans-serif"]
+        }
+      }
+    }
+  }
+</script><header class="fixed top-0 w-full z-50 bg-[#090d16]/85 backdrop-blur-xl border-b border-[#223048] shadow-[0_4px_20px_rgba(0,0,0,0.5)]"><div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6"><div class="flex items-center gap-6"><span class="text-lg font-headline font-bold tracking-tight text-white whitespace-nowrap flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_8px_#3b82f6]"></span>TWDFX 匯率通</span><div class="hidden xl:flex items-center gap-4 text-xs bg-[#0d121f] border border-[#223048] px-3.5 py-1.5 rounded"><span class="text-slate-400">USD/TWD <strong class="text-white font-semibold ml-1">32.45</strong></span><span class="text-slate-700">|</span><span class="text-slate-400">JPY/TWD <strong class="text-white font-semibold ml-1">0.214</strong></span><span class="text-slate-700">|</span><span class="text-slate-400">CNY/TWD <strong class="text-white font-semibold ml-1">4.48</strong></span><span class="text-slate-700">|</span><span class="text-slate-400">EUR/TWD <strong class="text-white font-semibold ml-1">34.82</strong></span></div></div><nav class="hidden md:flex items-center gap-6" data-active-classes="text-blue-400 font-semibold"><a class="text-sm text-slate-400 hover:text-white transition-colors whitespace-nowrap" data-path="rate-monitor" href="#monitor-section">即時行情</a><a class="text-sm text-slate-400 hover:text-white transition-colors whitespace-nowrap" data-path="historical-trends" href="#trend-section">歷史走勢分析</a><a aria-current="page" class="transition-colors whitespace-nowrap text-blue-400 font-semibold flex items-center gap-1.5" data-path="exchange-rate-comparison" href="#bank-section"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>銀行匯率比價</a><a class="text-sm text-slate-400 hover:text-white transition-colors whitespace-nowrap" data-path="converter" href="#converter-section">台幣換算器</a></nav><div class="flex items-center gap-4"><button aria-label="切換為淺色模式" class="group w-8 h-8 rounded-full flex items-center justify-center bg-[#0b111e] hover:bg-slate-800/80 text-amber-400 hover:text-amber-300 border border-[#223048] hover:border-amber-400/40 shadow-[0_0_10px_rgba(251,191,36,0.15)] transition-all duration-300 ease-in-out active:scale-90" id="theme-toggle-btn" title="切換為淺色模式" type="button"><span class="material-symbols-outlined text-[18px] transition-transform duration-300 ease-in-out group-hover:rotate-90 group-hover:scale-110 group-active:rotate-180 group-active:scale-95 inline-block select-none">light_mode</span></button><span class="hidden sm:inline-block text-xs text-slate-400 whitespace-nowrap" id="header-update-time">最後更新：14:32:05</span><div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(59,130,246,0.4)] border border-blue-400/40"><span class="material-symbols-outlined text-white text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-[#090d16] min-h-screen"><div class="flex flex-col w-full">
+<div class="max-w-7xl mx-auto w-full px-6 lg:px-12 py-8 flex flex-col gap-10">
+<!-- Section 1: 即時匯率即時檢視窗口 (REAL-TIME RATE MONITOR) -->
+<section class="flex flex-col gap-5" id="monitor-section">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold tracking-wider uppercase text-blue-400">01 / REAL-TIME RATE MONITOR</span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-semibold bg-[#064e3b]/80 text-[#34d399] border border-emerald-800/50">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-pulse-dot"></span>
+盤中即時連線中
+</span>
+</div>
+<h1 class="text-2xl font-bold text-white mt-1">即時匯率即時行情檢視</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 text-xs text-slate-400 bg-[#0d121f] px-3.5 py-1.5 rounded border border-[#223048]">
+<span class="material-symbols-outlined text-slate-500 text-[16px]">schedule</span>
+<span>更新於：<strong class="text-white font-mono" id="monitor-update-time">14:32:05</strong></span>
+</div>
+<button class="flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold rounded bg-blue-600 hover:bg-blue-500 text-white transition-all shadow-[0_0_14px_rgba(59,130,246,0.4)] border border-blue-400/50 active:scale-95 select-none" id="refresh-rate-btn" title="立即重新獲取最新匯率" type="button">
+<span class="material-symbols-outlined text-[16px]" id="refresh-icon">refresh</span>
+<span id="refresh-btn-text">立即刷新</span>
+</button>
+</div>
+</div>
+<!-- 5 Currency Monitor Cards (JPY, USD, CNY, EUR, GBP) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+<!-- Card 1: JPY -->
+<div class="bg-[#131c2e] p-4 rounded-lg border border-[#223048] flex flex-col justify-between gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:border-slate-500 transition-all duration-200 group">
+<div class="flex items-center justify-between pb-2 border-b border-[#1f2b3c]">
+<div class="flex items-center gap-2">
+<span aria-hidden="true" class="text-xl leading-none">🇯🇵</span>
+<div>
+<div class="text-sm font-bold text-white group-hover:text-blue-300 transition-colors">日幣 JPY</div>
+<div class="text-[11px] text-slate-400 font-mono">JPY / TWD</div>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#4c0519] text-[#f87171] border border-rose-900/60 font-mono">
+▼ -0.85%
+</span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1 font-mono">
+<div class="bg-[#0b111e] p-2 rounded border border-[#1f2b3c]">
+<div class="text-[10px] text-slate-400 uppercase font-sans">即期買入</div>
+<div class="text-base font-bold text-slate-200 mt-0.5 tabular-nums monitor-rate-val" data-base="0.2102">0.2102</div>
+</div>
+<div class="bg-[#0b111e] p-2 rounded border border-[#1f2b3c]">
+<div class="text-[10px] text-blue-400 uppercase font-sans">即期賣出</div>
+<div class="text-base font-bold text-blue-400 mt-0.5 tabular-nums monitor-rate-val" data-base="0.2140">0.2140</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-slate-400 pt-1 font-mono">
+<span>24H 區間</span>
+<span class="text-slate-300">0.2132 - 0.2149</span>
+</div>
+<div class="w-full h-8 pt-1">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 24">
+<path d="M0,8 L20,12 L40,6 L60,16 L80,18 L100,14" fill="none" stroke="#f87171" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+<circle cx="100" cy="14" fill="#f87171" r="2.5"></circle>
+</svg>
+</div>
+</div>
+<!-- Card 2: USD -->
+<div class="bg-[#131c2e] p-4 rounded-lg border border-[#223048] flex flex-col justify-between gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:border-slate-500 transition-all duration-200 group">
+<div class="flex items-center justify-between pb-2 border-b border-[#1f2b3c]">
+<div class="flex items-center gap-2">
+<span aria-hidden="true" class="text-xl leading-none">🇺🇸</span>
+<div>
+<div class="text-sm font-bold text-white group-hover:text-blue-300 transition-colors">美金 USD</div>
+<div class="text-[11px] text-slate-400 font-mono">USD / TWD</div>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#064e3b] text-[#34d399] border border-emerald-900/60 font-mono">
+▲ +0.37%
+</span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1 font-mono">
+<div class="bg-[#0b111e] p-2 rounded border border-[#1f2b3c]">
+<div class="text-[10px] text-slate-400 uppercase font-sans">即期買入</div>
+<div class="text-base font-bold text-slate-200 mt-0.5 tabular-nums monitor-rate-val" data-base="32.350">32.350</div>
+</div>
+<div class="bg-[#0b111e] p-2 rounded border border-[#1f2b3c]">
+<div class="text-[10px] text-blue-400 uppercase font-sans">即期賣出</div>
+<div class="text-base font-bold text-blue-400 mt-0.5 tabular-nums monitor-rate-val" data-base="32.450">32.450</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-slate-400 pt-1 font-mono">
+<span>24H 區間</span>
+<span class="text-slate-300">32.350 - 32.480</span>
+</div>
+<div class="w-full h-8 pt-1">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 24">
+<path d="M0,18 L25,15 L50,11 L75,8 L100,5" fill="none" stroke="#34d399" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+<circle cx="100" cy="5" fill="#34d399" r="2.5"></circle>
+</svg>
+</div>
+</div>
+<!-- Card 3: CNY -->
+<div class="bg-[#131c2e] p-4 rounded-lg border border-[#223048] flex flex-col justify-between gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:border-slate-500 transition-all duration-200 group">
+<div class="flex items-center justify-between pb-2 border-b border-[#1f2b3c]">
+<div class="flex items-center gap-2">
+<span aria-hidden="true" class="text-xl leading-none">🇨🇳</span>
+<div>
+<div class="text-sm font-bold text-white group-hover:text-blue-300 transition-colors">人民幣 CNY</div>
+<div class="text-[11px] text-slate-400 font-mono">CNY / TWD</div>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#064e3b] text-[#34d399] border border-emerald-900/60 font-mono">
+▲ +0.34%
+</span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1 font-mono">
+<div class="bg-[#0b111e] p-2 rounded border border-[#1f2b3c]">
+<div class="text-[10px] text-slate-400 uppercase font-sans">即期買入</div>
+<div class="text-base font-bold text-slate-200 mt-0.5 tabular-nums monitor-rate-val" data-base="4.440">4.440</div>
+</div>
+<div class="bg-[#0b111e] p-2 rounded border border-[#1f2b3c]">
+<div class="text-[10px] text-blue-400 uppercase font-sans">即期賣出</div>
+<div class="text-base font-bold text-blue-400 mt-0.5 tabular-nums monitor-rate-val" data-base="4.480">4.480</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-slate-400 pt-1 font-mono">
+<span>24H 區間</span>
+<span class="text-slate-300">4.462 - 4.488</span>
+</div>
+<div class="w-full h-8 pt-1">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 24">
+<path d="M0,16 L30,14 L55,16 L75,10 L100,7" fill="none" stroke="#34d399" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+<circle cx="100" cy="7" fill="#34d399" r="2.5"></circle>
+</svg>
+</div>
+</div>
+<!-- Card 4: EUR -->
+<div class="bg-[#131c2e] p-4 rounded-lg border border-[#223048] flex flex-col justify-between gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:border-slate-500 transition-all duration-200 group">
+<div class="flex items-center justify-between pb-2 border-b border-[#1f2b3c]">
+<div class="flex items-center gap-2">
+<span aria-hidden="true" class="text-xl leading-none">🇪🇺</span>
+<div>
+<div class="text-sm font-bold text-white group-hover:text-blue-300 transition-colors">歐元 EUR</div>
+<div class="text-[11px] text-slate-400 font-mono">EUR / TWD</div>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#064e3b] text-[#34d399] border border-emerald-900/60 font-mono">
+▲ +0.18%
+</span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1 font-mono">
+<div class="bg-[#0b111e] p-2 rounded border border-[#1f2b3c]">
+<div class="text-[10px] text-slate-400 uppercase font-sans">即期買入</div>
+<div class="text-base font-bold text-slate-200 mt-0.5 tabular-nums monitor-rate-val" data-base="34.620">34.620</div>
+</div>
+<div class="bg-[#0b111e] p-2 rounded border border-[#1f2b3c]">
+<div class="text-[10px] text-blue-400 uppercase font-sans">即期賣出</div>
+<div class="text-base font-bold text-blue-400 mt-0.5 tabular-nums monitor-rate-val" data-base="34.820">34.820</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-slate-400 pt-1 font-mono">
+<span>24H 區間</span>
+<span class="text-slate-300">34.580 - 34.890</span>
+</div>
+<div class="w-full h-8 pt-1">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 24">
+<path d="M0,14 L30,11 L60,13 L80,9 L100,6" fill="none" stroke="#34d399" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+<circle cx="100" cy="6" fill="#34d399" r="2.5"></circle>
+</svg>
+</div>
+</div>
+<!-- Card 5: GBP -->
+<div class="bg-[#131c2e] p-4 rounded-lg border border-[#223048] flex flex-col justify-between gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:border-slate-500 transition-all duration-200 group">
+<div class="flex items-center justify-between pb-2 border-b border-[#1f2b3c]">
+<div class="flex items-center gap-2">
+<span aria-hidden="true" class="text-xl leading-none">🇬🇧</span>
+<div>
+<div class="text-sm font-bold text-white group-hover:text-blue-300 transition-colors">英鎊 GBP</div>
+<div class="text-[11px] text-slate-400 font-mono">GBP / TWD</div>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#4c0519] text-[#f87171] border border-rose-900/60 font-mono">
+▼ -0.22%
+</span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1 font-mono">
+<div class="bg-[#0b111e] p-2 rounded border border-[#1f2b3c]">
+<div class="text-[10px] text-slate-400 uppercase font-sans">即期買入</div>
+<div class="text-base font-bold text-slate-200 mt-0.5 tabular-nums monitor-rate-val" data-base="41.250">41.250</div>
+</div>
+<div class="bg-[#0b111e] p-2 rounded border border-[#1f2b3c]">
+<div class="text-[10px] text-blue-400 uppercase font-sans">即期賣出</div>
+<div class="text-base font-bold text-blue-400 mt-0.5 tabular-nums monitor-rate-val" data-base="41.520">41.520</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-slate-400 pt-1 font-mono">
+<span>24H 區間</span>
+<span class="text-slate-300">41.220 - 41.650</span>
+</div>
+<div class="w-full h-8 pt-1">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 24">
+<path d="M0,6 L25,8 L50,14 L75,11 L100,16" fill="none" stroke="#f87171" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+<circle cx="100" cy="16" fill="#f87171" r="2.5"></circle>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: 匯率起伏走勢折線圖 -->
+<section class="flex flex-col gap-5" id="trend-section">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="text-xs font-semibold tracking-wider uppercase text-blue-400">02 / HISTORICAL TREND</span>
+<h2 class="text-2xl font-bold text-white mt-1">匯率起伏走勢折線圖</h2>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<!-- Currency Tabs -->
+<div class="flex items-center bg-[#0d121f] p-1 rounded border border-[#223048]" role="tablist">
+<button class="chart-curr-btn px-3 py-1.5 text-xs font-semibold rounded bg-blue-600 text-white transition-all shadow-[0_0_10px_rgba(59,130,246,0.35)]" data-chart-currency="JPY" type="button">日幣 JPY</button>
+<button class="chart-curr-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors" data-chart-currency="USD" type="button">美金 USD</button>
+<button class="chart-curr-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors" data-chart-currency="CNY" type="button">人民幣 CNY</button>
+</div>
+<!-- Timeframe Segmented Control -->
+<div class="flex items-center bg-[#0d121f] p-1 rounded border border-[#223048]" role="tablist">
+<button class="chart-range-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors" data-chart-range="1D" type="button">當日</button>
+<button class="chart-range-btn px-3 py-1.5 text-xs font-semibold rounded bg-[#182236] text-white border border-[#2a3b58] shadow-sm transition-colors" data-chart-range="1W" type="button">當週</button>
+<button class="chart-range-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors" data-chart-range="1M" type="button">當月</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-5">
+<!-- SVG Chart Container -->
+<div class="lg:col-span-3 bg-[#131c2e] p-5 rounded-lg border border-[#223048] flex flex-col gap-4 shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
+<div class="flex items-center justify-between pb-2 border-b border-[#1f2b3c]">
+<div class="flex items-center gap-3">
+<span class="text-sm font-semibold text-white" id="chart-title">日幣 (JPY/TWD) 即期賣出走勢</span>
+<span class="text-xs px-2 py-0.5 rounded bg-[#182236] text-slate-300 border border-[#2a3b58]" id="chart-subtitle">近 7 日區間</span>
+</div>
+<span class="text-xs text-slate-400 tabular-nums">單位：新台幣 (TWD)</span>
+</div>
+<div class="w-full h-64 relative">
+<svg class="w-full h-full overflow-visible" id="trend-svg" preserveAspectRatio="none" viewBox="0 0 720 220">
+<defs>
+<linearGradient id="chartAreaGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#3b82f6" stop-opacity="0.35"></stop>
+<stop offset="80%" stop-color="#1d4ed8" stop-opacity="0.08"></stop>
+<stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.0"></stop>
+</linearGradient>
+<filter height="140%" id="glow" width="140%" x="-20%" y="-20%">
+<feGaussianBlur result="blur" stdDeviation="3"></feGaussianBlur>
+<feMerge>
+<feMergeNode in="blur"></feMergeNode>
+<feMerge>
+<feMergeNode in="SourceGraphic"></feMergeNode>
+</feMerge>
+</feMerge></filter>
+</defs>
+<!-- Gridlines -->
+<g stroke="#1f2d44" stroke-dasharray="3 3" stroke-width="1">
+<line x1="56" x2="700" y1="20" y2="20"></line>
+<line x1="56" x2="700" y1="65" y2="65"></line>
+<line x1="56" x2="700" y1="110" y2="110"></line>
+<line x1="56" x2="700" y1="155" y2="155"></line>
+<line x1="56" x2="700" y1="200" y2="200"></line>
+</g>
+<!-- Y-Axis Labels -->
+<g class="text-[11px] fill-slate-400 tabular-nums font-mono" id="chart-y-labels" text-anchor="end">
+<text x="48" y="24">0.2180</text>
+<text x="48" y="69">0.2165</text>
+<text x="48" y="114">0.2150</text>
+<text x="48" y="159">0.2135</text>
+<text x="48" y="204">0.2120</text>
+</g>
+<!-- Area & Line -->
+<path d="M56,110 L163,92 L270,135 L377,80 L484,120 L591,148 L700,140 L700,200 L56,200 Z" fill="url(#chartAreaGrad)" id="chart-area-path"></path>
+<path d="M56,110 L163,92 L270,135 L377,80 L484,120 L591,148 L700,140" fill="none" filter="url(#glow)" id="chart-line-path" stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<!-- Data Points -->
+<g fill="#0b111e" id="chart-points" stroke="#60a5fa" stroke-width="2.5"><defs><style>@keyframes pulseGlowRingDark { 0% { r: 5px; opacity: 0.9; stroke-width: 2.5px; } 50% { r: 14px; opacity: 0.35; stroke-width: 1.5px; } 100% { r: 20px; opacity: 0; stroke-width: 0.5px; } } @keyframes pulseDotBreathDark { 0%, 100% { filter: drop-shadow(0 0 3px currentColor); } 50% { filter: drop-shadow(0 0 10px currentColor); } } .dark-high-ripple { animation: pulseGlowRingDark 2s cubic-bezier(0.16, 1, 0.3, 1) infinite; } .dark-high-glow { animation: pulseDotBreathDark 2s ease-in-out infinite; color: #34d399; } .dark-low-ripple { animation: pulseGlowRingDark 2s cubic-bezier(0.16, 1, 0.3, 1) infinite; animation-delay: 1s; } .dark-low-glow { animation: pulseDotBreathDark 2s ease-in-out infinite; animation-delay: 1s; color: #f87171; } @media (prefers-reduced-motion: reduce) { .dark-high-ripple, .dark-low-ripple, .dark-high-glow, .dark-low-glow { animation: none !important; } }</style></defs><circle cx="56" cy="110" r="4.5"></circle><circle cx="163" cy="92" r="4.5"></circle><circle cx="270" cy="135" r="4.5"></circle><circle cx="377" cy="80" r="4.5"></circle><circle cx="484" cy="120" r="4.5"></circle><circle cx="591" cy="148" r="4.5"></circle><circle cx="700" cy="140" r="4.5"></circle><g><circle class="dark-high-ripple" cx="377" cy="80" fill="none" pointer-events="none" r="5" stroke="#34d399" stroke-width="2.5"></circle><circle class="dark-high-glow" cx="377" cy="80" fill="#0b111e" r="5.5" stroke="#34d399" stroke-width="2.5"></circle><g transform="translate(377, 48)"><rect fill="#064e3b" height="22" rx="4" stroke="#34d399" stroke-width="1" width="72" x="-36" y="0"></rect><text fill="#34d399" font-family="Inter, monospace" font-size="11" font-weight="600" text-anchor="middle" x="0" y="15">高 0.2162</text><polygon fill="#064e3b" points="-4,22 4,22 0,26"></polygon></g></g><g><circle class="dark-low-ripple" cx="591" cy="148" fill="none" pointer-events="none" r="5" stroke="#f87171" stroke-width="2.5"></circle><circle class="dark-low-glow" cx="591" cy="148" fill="#0b111e" r="5.5" stroke="#f87171" stroke-width="2.5"></circle><g transform="translate(591, 168)"><polygon fill="#4c0519" points="-4,0 4,0 0,-4"></polygon><rect fill="#4c0519" height="22" rx="4" stroke="#f87171" stroke-width="1" width="72" x="-36" y="0"></rect><text fill="#f87171" font-family="Inter, monospace" font-size="11" font-weight="600" text-anchor="middle" x="0" y="15">低 0.2134</text></g></g></g>
+</svg>
+</div>
+</div>
+<!-- Right-side Summary Metrics -->
+<div class="grid grid-cols-2 lg:grid-cols-1 gap-3">
+<div class="bg-[#131c2e] p-4 rounded-lg border border-[#223048] flex flex-col justify-between shadow-[0_4px_16px_rgba(0,0,0,0.2)]">
+<span class="text-xs text-slate-400">期間最高 (High)</span>
+<span class="text-xl font-bold text-white tabular-nums mt-1 font-mono" data-current-val="0.2162" id="metric-high">0.2162</span>
+</div>
+<div class="bg-[#131c2e] p-4 rounded-lg border border-[#223048] flex flex-col justify-between shadow-[0_4px_16px_rgba(0,0,0,0.2)]">
+<span class="text-xs text-slate-400">期間最低 (Low)</span>
+<span class="text-xl font-bold text-white tabular-nums mt-1 font-mono" data-current-val="0.2134" id="metric-low">0.2134</span>
+</div>
+<div class="bg-[#131c2e] p-4 rounded-lg border border-[#223048] flex flex-col justify-between shadow-[0_4px_16px_rgba(0,0,0,0.2)]">
+<span class="text-xs text-slate-400">期間均價 (Average)</span>
+<span class="text-xl font-bold text-white tabular-nums mt-1 font-mono" data-current-val="0.2148" id="metric-avg">0.2148</span>
+</div>
+<div class="bg-[#131c2e] p-4 rounded-lg border border-[#223048] flex flex-col justify-between shadow-[0_4px_16px_rgba(0,0,0,0.2)]">
+<span class="text-xs text-slate-400">漲跌幅 (Change)</span>
+<span class="text-xl font-bold tabular-nums mt-1 font-mono text-[#f87171]" data-current-val="-0.85" id="metric-change">-0.85%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: 台灣各銀行最划算匯率比較表 -->
+<section class="flex flex-col gap-5" id="bank-section">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="text-xs font-semibold tracking-wider uppercase text-blue-400">03 / BANK COMPARISON</span>
+<h2 class="text-2xl font-bold text-white mt-1">台灣各銀行最划算匯率比較表</h2>
+</div>
+<div class="text-xs text-slate-400">
+          依所選交易類型自動排序，點擊列表行可選中高亮對比，最優惠銀行標示為 <span class="font-semibold text-blue-400">最划算</span>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-[#131c2e] p-4 rounded-lg border border-[#223048] flex flex-col lg:flex-row lg:items-center justify-between gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+<div class="flex flex-wrap items-center gap-3">
+<div class="flex items-center bg-[#0b111e] p-1 rounded border border-[#2a3b58]">
+<button class="table-curr-btn px-3 py-1.5 text-xs font-semibold rounded bg-blue-600 text-white transition-all shadow-[0_0_8px_rgba(59,130,246,0.35)]" data-table-currency="JPY" type="button">日幣 JPY</button>
+<button class="table-curr-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors" data-table-currency="USD" type="button">美金 USD</button>
+<button class="table-curr-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors" data-table-currency="CNY" type="button">人民幣 CNY</button>
+</div>
+<div class="flex flex-wrap items-center bg-[#0b111e] p-1 rounded border border-[#2a3b58]">
+<button class="rate-type-btn px-3 py-1.5 text-xs font-semibold rounded bg-[#182236] text-white border border-[#2a3b58] transition-colors" data-rate-type="spotSell" type="button">即期賣出 (線上換匯)</button>
+<button class="rate-type-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors" data-rate-type="cashSell" type="button">現金賣出 (臨櫃換匯)</button>
+<button class="rate-type-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors" data-rate-type="spotBuy" type="button">即期買入</button>
+<button class="rate-type-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors" data-rate-type="cashBuy" type="button">現金買入</button>
+</div>
+</div>
+<div class="flex items-center bg-[#0b111e] h-10 px-3.5 min-w-[220px] rounded border border-[#2a3b58] focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all">
+<span class="material-symbols-outlined text-slate-400 text-[18px] mr-2">search</span>
+<input class="w-full bg-transparent text-sm text-white placeholder:text-slate-500 focus:outline-none" id="bank-search-input" placeholder="搜尋銀行名稱..." type="text">
+</div>
+</div>
+<!-- Carbon Data Table -->
+<div class="w-full overflow-x-auto rounded-lg border border-[#223048] shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+<table class="w-full text-left border-collapse select-none">
+<thead>
+<tr class="bg-[#182236] text-slate-400 text-xs font-semibold uppercase tracking-wider border-b border-[#223048]">
+<th class="py-3.5 px-4 whitespace-nowrap">銀行名稱</th>
+<th class="py-3.5 px-4 text-right whitespace-nowrap">現金買入</th>
+<th class="py-3.5 px-4 text-right whitespace-nowrap">現金賣出</th>
+<th class="py-3.5 px-4 text-right whitespace-nowrap">即期買入</th>
+<th class="py-3.5 px-4 text-right whitespace-nowrap">即期賣出</th>
+<th class="py-3.5 px-4 text-right whitespace-nowrap" id="calc-col-header">試算金額 (100,000 TWD)</th>
+<th class="py-3.5 px-4 text-right whitespace-nowrap">價差 / 推薦</th>
+</tr>
+</thead>
+<tbody class="text-sm text-slate-200 tabular-nums divide-y divide-[#1b263b]" id="bank-table-body">
+<tr class="bank-row cursor-pointer transition-all duration-200 select-none bank-row-selected bg-gradient-to-r from-blue-950/80 via-blue-900/40 to-blue-950/20 border-l-[5px] border-l-blue-400 ring-1 ring-blue-500/50" data-bank-code="808">
+<td class="py-3.5 px-4 font-medium whitespace-nowrap text-white">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-colors bg-blue-500 text-white shadow-[0_0_12px_rgba(59,130,246,1)] ring-1 ring-blue-300">
+<span class="material-symbols-outlined text-[12px] font-bold inline-block">check</span>
+</span>
+<span class="text-xs text-blue-300 font-semibold font-mono">808</span>
+<span class="text-blue-100 font-bold drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]">玉山銀行</span>
+<span class="text-[10px] uppercase font-semibold tracking-wider px-1.5 py-0.5 rounded bg-blue-500/25 text-blue-200 border border-blue-400/50 shadow-[0_0_8px_rgba(59,130,246,0.35)]">已選中</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2058</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2160</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2105</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-blue-400">0.2136</td>
+<td class="py-3.5 px-4 text-right font-semibold text-white font-mono">
+<span class="bank-calc-num" data-current-val="468164.7940074906" data-val="468164.7940074906">468,165</span> JPY
+            </td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<span class="inline-block px-2.5 py-0.5 text-xs font-semibold rounded bg-blue-600 text-white shadow-[0_0_10px_rgba(59,130,246,0.4)]">最划算</span>
+</td>
+</tr>
+<tr class="bank-row cursor-pointer transition-all duration-200 select-none bg-[#101827] hover:bg-[#1a263d] border-l-4 border-l-transparent" data-bank-code="812">
+<td class="py-3.5 px-4 font-medium whitespace-nowrap text-white">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-colors bg-[#1b263b] text-slate-500 border border-[#2a3b58]">
+<span class="material-symbols-outlined text-[12px] font-bold hidden">check</span>
+</span>
+<span class="text-xs text-slate-400 font-mono">812</span>
+<span>台新銀行</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2056</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2161</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2104</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-blue-400">0.2137</td>
+<td class="py-3.5 px-4 text-right font-semibold text-white font-mono">
+<span class="bank-calc-num" data-current-val="467945.7182966776" data-val="467945.7182966776">467,946</span> JPY
+            </td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<span class="text-xs text-slate-400 font-mono">差 0.0001</span>
+</td>
+</tr>
+<tr class="bank-row cursor-pointer transition-all duration-200 select-none bg-[#131c2e] hover:bg-[#1a263d] border-l-4 border-l-transparent" data-bank-code="013">
+<td class="py-3.5 px-4 font-medium whitespace-nowrap text-white">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-colors bg-[#1b263b] text-slate-500 border border-[#2a3b58]">
+<span class="material-symbols-outlined text-[12px] font-bold hidden">check</span>
+</span>
+<span class="text-xs text-slate-400 font-mono">013</span>
+<span>國泰世華</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2052</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2162</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2101</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-blue-400">0.2138</td>
+<td class="py-3.5 px-4 text-right font-semibold text-white font-mono">
+<span class="bank-calc-num" data-current-val="467726.84752104775" data-val="467726.84752104775">467,727</span> JPY
+            </td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<span class="text-xs text-slate-400 font-mono">差 0.0002</span>
+</td>
+</tr>
+<tr class="bank-row cursor-pointer transition-all duration-200 select-none bg-[#101827] hover:bg-[#1a263d] border-l-4 border-l-transparent" data-bank-code="012">
+<td class="py-3.5 px-4 font-medium whitespace-nowrap text-white">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-colors bg-[#1b263b] text-slate-500 border border-[#2a3b58]">
+<span class="material-symbols-outlined text-[12px] font-bold hidden">check</span>
+</span>
+<span class="text-xs text-slate-400 font-mono">012</span>
+<span>台北富邦</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2054</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2164</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2103</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-blue-400">0.2139</td>
+<td class="py-3.5 px-4 text-right font-semibold text-white font-mono">
+<span class="bank-calc-num" data-current-val="467508.18139317434" data-val="467508.18139317434">467,508</span> JPY
+            </td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<span class="text-xs text-slate-400 font-mono">差 0.0003</span>
+</td>
+</tr>
+<tr class="bank-row cursor-pointer transition-all duration-200 select-none bg-[#131c2e] hover:bg-[#1a263d] border-l-4 border-l-transparent" data-bank-code="004">
+<td class="py-3.5 px-4 font-medium whitespace-nowrap text-white">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-colors bg-[#1b263b] text-slate-500 border border-[#2a3b58]">
+<span class="material-symbols-outlined text-[12px] font-bold hidden">check</span>
+</span>
+<span class="text-xs text-slate-400 font-mono">004</span>
+<span>台灣銀行</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2055</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2165</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2102</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-blue-400">0.2140</td>
+<td class="py-3.5 px-4 text-right font-semibold text-white font-mono">
+<span class="bank-calc-num" data-current-val="467289.71962616825" data-val="467289.71962616825">467,290</span> JPY
+            </td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<span class="text-xs text-slate-400 font-mono">差 0.0004</span>
+</td>
+</tr>
+<tr class="bank-row cursor-pointer transition-all duration-200 select-none bg-[#101827] hover:bg-[#1a263d] border-l-4 border-l-transparent" data-bank-code="017">
+<td class="py-3.5 px-4 font-medium whitespace-nowrap text-white">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-colors bg-[#1b263b] text-slate-500 border border-[#2a3b58]">
+<span class="material-symbols-outlined text-[12px] font-bold hidden">check</span>
+</span>
+<span class="text-xs text-slate-400 font-mono">017</span>
+<span>兆豐銀行</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2053</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2163</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2102</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-blue-400">0.2141</td>
+<td class="py-3.5 px-4 text-right font-semibold text-white font-mono">
+<span class="bank-calc-num" data-current-val="467071.4619336758" data-val="467071.4619336758">467,071</span> JPY
+            </td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<span class="text-xs text-slate-400 font-mono">差 0.0005</span>
+</td>
+</tr>
+<tr class="bank-row cursor-pointer transition-all duration-200 select-none bg-[#131c2e] hover:bg-[#1a263d] border-l-4 border-l-transparent" data-bank-code="822">
+<td class="py-3.5 px-4 font-medium whitespace-nowrap text-white">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-colors bg-[#1b263b] text-slate-500 border border-[#2a3b58]">
+<span class="material-symbols-outlined text-[12px] font-bold hidden">check</span>
+</span>
+<span class="text-xs text-slate-400 font-mono">822</span>
+<span>中國信託</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2050</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2168</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2100</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-blue-400">0.2142</td>
+<td class="py-3.5 px-4 text-right font-semibold text-white font-mono">
+<span class="bank-calc-num" data-current-val="466853.4080298786" data-val="466853.4080298786">466,853</span> JPY
+            </td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<span class="text-xs text-slate-400 font-mono">差 0.0006</span>
+</td>
+</tr>
+<tr class="bank-row cursor-pointer transition-all duration-200 select-none bg-[#101827] hover:bg-[#1a263d] border-l-4 border-l-transparent" data-bank-code="007">
+<td class="py-3.5 px-4 font-medium whitespace-nowrap text-white">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-colors bg-[#1b263b] text-slate-500 border border-[#2a3b58]">
+<span class="material-symbols-outlined text-[12px] font-bold hidden">check</span>
+</span>
+<span class="text-xs text-slate-400 font-mono">007</span>
+<span>第一銀行</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2051</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2166</td>
+<td class="py-3.5 px-4 text-right font-mono text-slate-300">0.2099</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-blue-400">0.2143</td>
+<td class="py-3.5 px-4 text-right font-semibold text-white font-mono">
+<span class="bank-calc-num" data-current-val="466635.5576294914" data-val="466635.5576294914">466,636</span> JPY
+            </td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<span class="text-xs text-slate-400 font-mono">差 0.0007</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 4: 即時台幣換算器 (REAL-TIME CONVERTER，已移至最下方) -->
+<section class="flex flex-col gap-5 pt-4 border-t border-[#1f2b3c]" id="converter-section"><div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold tracking-wider uppercase text-blue-400">04 / REAL-TIME CONVERTER</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-500/15 text-blue-300 border border-blue-400/30 font-mono">FEE CALCULATOR</span>
+</div>
+<h2 class="text-2xl font-bold text-white mt-1">即時台幣換算器 &amp; 手續費試算</h2>
+</div>
+<div class="flex items-center gap-1.5 bg-[#0d121f] p-1 rounded border border-[#223048]">
+<button class="px-3.5 py-1.5 text-xs font-semibold rounded bg-blue-600 text-white transition-all shadow-[0_0_12px_rgba(59,130,246,0.35)]" id="dir-twd-to-fx" type="button">台幣換外幣</button>
+<button class="px-3.5 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-slate-200 transition-colors" id="dir-fx-to-twd" type="button">外幣換台幣</button>
+</div>
+</div>
+<!-- Input Bar & Fee Customizer Control Panel -->
+<div class="bg-[#131c2e] p-6 rounded-lg border border-[#223048] flex flex-col gap-5 shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left: Amount Input & Quick Select (Col 1-7) -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center gap-4">
+<div class="flex flex-col gap-1.5 flex-1 min-w-[220px]">
+<label class="text-xs font-medium text-slate-400" for="twd-amount-input" id="amount-input-label">輸入金額 (新台幣 TWD)</label>
+<div class="relative flex items-center bg-[#0b111e] h-12 px-3.5 border border-[#2a3b58] rounded focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all shadow-inner">
+<span class="text-sm font-semibold text-slate-400 mr-2 select-none" id="input-currency-prefix">NT$</span>
+<input class="w-full bg-transparent text-lg font-bold text-white tabular-nums focus:outline-none font-mono" id="twd-amount-input" inputmode="numeric" type="text" value="100,000">
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<span class="text-xs font-medium text-slate-400">快速選擇金額</span>
+<div class="flex flex-wrap items-center gap-1.5">
+<button class="quick-amt-btn px-2.5 py-2 text-xs font-semibold bg-[#0b111e] text-slate-300 hover:bg-blue-600 hover:text-white border border-[#2a3b58] rounded transition-colors" data-quick-amount="10000" type="button">1萬</button>
+<button class="quick-amt-btn px-2.5 py-2 text-xs font-semibold bg-[#0b111e] text-slate-300 hover:bg-blue-600 hover:text-white border border-[#2a3b58] rounded transition-colors" data-quick-amount="50000" type="button">5萬</button>
+<button class="quick-amt-btn px-2.5 py-2 text-xs font-semibold bg-blue-600 text-white border border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.35)] rounded transition-colors" data-quick-amount="100000" type="button">10萬</button>
+<button class="quick-amt-btn px-2.5 py-2 text-xs font-semibold bg-[#0b111e] text-slate-300 hover:bg-blue-600 hover:text-white border border-[#2a3b58] rounded transition-colors" data-quick-amount="500000" type="button">50萬</button>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<span class="material-symbols-outlined text-blue-400 text-[16px]">info</span>
+<span>牌告匯率基準：台灣銀行即期賣出牌告匯率即時連線</span>
+</div>
+</div>
+<!-- Right: Fee Calculation Customizer (Col 8-12) -->
+<div class="lg:col-span-5 bg-[#0b111e] p-4 rounded-lg border border-[#223048] flex flex-col gap-3 shadow-inner">
+<div class="flex items-center justify-between pb-2 border-b border-[#1f2b3c]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-400 text-[18px]">calculate</span>
+<span class="text-xs font-bold text-white tracking-wide">手續費自訂試算 (Fee Setting)</span>
+</div>
+<span class="text-[11px] text-slate-400 font-mono" id="fee-summary-badge">免收手續費</span>
+</div>
+<!-- Fee Type Buttons -->
+<div class="grid grid-cols-3 gap-1.5 p-1 bg-[#131c2e] rounded border border-[#223048]">
+<button class="fee-type-btn px-2 py-1.5 text-xs font-semibold rounded bg-blue-600 text-white shadow-[0_0_8px_rgba(59,130,246,0.35)] transition-all" data-fee-type="none" type="button">免手續費 (0%)</button>
+<button class="fee-type-btn px-2 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors" data-fee-type="percent" type="button">百分比率 (%)</button>
+<button class="fee-type-btn px-2 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors" data-fee-type="fixed" type="button">固定金額 (單筆)</button>
+</div>
+<!-- Fee Custom Inputs -->
+<div class="flex flex-wrap items-center gap-2 pt-1">
+<div class="flex items-center gap-1.5 flex-1 min-w-[140px]">
+<span class="text-xs text-slate-400 whitespace-nowrap" id="fee-input-label">自訂手續費率：</span>
+<div class="relative flex items-center bg-[#131c2e] h-8 px-2.5 border border-[#2a3b58] rounded focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500/30 flex-1">
+<input class="w-full bg-transparent text-xs font-semibold text-white tabular-nums focus:outline-none font-mono text-right" id="fee-value-input" max="100" min="0" step="0.05" type="number" value="0">
+<span class="text-xs font-mono text-slate-400 ml-1.5" id="fee-input-unit">%</span>
+</div>
+</div>
+<!-- Preset Quick Chips -->
+<div class="flex items-center gap-1" id="fee-chips-container">
+<button class="fee-chip-btn px-2 py-1 text-[11px] font-mono bg-[#182236] text-blue-300 hover:bg-blue-600 hover:text-white border border-[#2a3b58] rounded transition-colors" data-fee-preset="0.2" type="button">0.2%</button>
+<button class="fee-chip-btn px-2 py-1 text-[11px] font-mono bg-[#182236] text-blue-300 hover:bg-blue-600 hover:text-white border border-[#2a3b58] rounded transition-colors" data-fee-preset="0.5" type="button">0.5%</button>
+<button class="fee-chip-btn px-2 py-1 text-[11px] font-mono bg-[#182236] text-blue-300 hover:bg-blue-600 hover:text-white border border-[#2a3b58] rounded transition-colors" data-fee-preset="100" type="button">$100</button>
+</div>
+</div>
+<div class="mt-2 pt-3 border-t border-[#1f2b3c] flex flex-col gap-2.5"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-emerald-400 text-[16px]">verified</span><span class="text-xs font-bold text-slate-200">各大銀行免手續費門檻與優惠規則</span></div><span class="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-emerald-950/70 text-[#34d399] border border-emerald-800/60">優惠彙整</span></div><div class="grid grid-cols-1 gap-2 text-xs"><div class="p-2 rounded bg-[#131c2e] border border-[#1f2b3c] flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-semibold text-blue-300 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>玉山銀行 (808)</span><span class="px-1.5 py-0.2 rounded text-[10px] font-mono bg-blue-500/15 text-blue-300 border border-blue-400/30">線上結匯 0 元</span></div><p class="text-slate-400 text-[11px] leading-relaxed">外幣帳戶線上結匯 0 手續費，數位帳戶每月享 3 次免手續費。</p></div><div class="p-2 rounded bg-[#131c2e] border border-[#1f2b3c] flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-semibold text-blue-300 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>台新銀行 Richart (812)</span><span class="px-1.5 py-0.2 rounded text-[10px] font-mono bg-blue-500/15 text-blue-300 border border-blue-400/30">月享 2 次免手續費</span></div><p class="text-slate-400 text-[11px] leading-relaxed">指定存戶每月享 2 次外幣提領/結匯免手續費，線上即期換匯免手續費。</p></div><div class="p-2 rounded bg-[#131c2e] border border-[#1f2b3c] flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-semibold text-blue-300 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>國泰世華 CUBE (013)</span><span class="px-1.5 py-0.2 rounded text-[10px] font-mono bg-blue-500/15 text-blue-300 border border-blue-400/30">VIP 免手續費</span></div><p class="text-slate-400 text-[11px] leading-relaxed">CUBE 數位存戶與 VIP 線上結匯免手續費，指定星等外幣現鈔減免。</p></div><div class="p-2 rounded bg-[#131c2e] border border-[#1f2b3c] flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-semibold text-blue-300 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>台北富邦 (012)</span><span class="px-1.5 py-0.2 rounded text-[10px] font-mono bg-blue-500/15 text-blue-300 border border-blue-400/30">奈米存戶特權</span></div><p class="text-slate-400 text-[11px] leading-relaxed">線上換匯 0 手續費，奈米存戶每月享免手續費優惠。</p></div><div class="p-2 rounded bg-[#131c2e] border border-[#1f2b3c] flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-semibold text-blue-300 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>台灣銀行 (004)</span><span class="px-1.5 py-0.2 rounded text-[10px] font-mono bg-blue-500/15 text-blue-300 border border-blue-400/30">牌告讓分優惠</span></div><p class="text-slate-400 text-[11px] leading-relaxed">網銀線上換匯免手續費且享匯率牌告減讓，現鈔提領門檻低。</p></div><div class="p-2 rounded bg-[#131c2e] border border-[#1f2b3c] flex flex-col gap-1"><div class="flex items-center justify-between"><span class="font-semibold text-blue-300 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>永豐銀行 DAWHO (807)</span><span class="px-1.5 py-0.2 rounded text-[10px] font-mono bg-blue-500/15 text-blue-300 border border-blue-400/30">大戶專屬特權</span></div><p class="text-slate-400 text-[11px] leading-relaxed">大戶等級享外幣跨提/線上轉匯多項免手續費特權。</p></div></div></div></div>
+</div>
+</div>
+<!-- 3 Currency Result Cards with Net Amount Breakdown -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<!-- JPY Card -->
+<div class="bg-[#131c2e] p-5 rounded-lg border border-[#223048] flex flex-col justify-between gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:border-slate-500 transition-colors group">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<span aria-hidden="true" class="text-2xl leading-none">🇯🇵</span>
+<div>
+<div class="text-sm font-bold text-white group-hover:text-blue-300 transition-colors">日幣 (JPY)</div>
+<div class="text-xs text-slate-400 tabular-nums font-mono">1 JPY = 0.2140 TWD</div>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-[#4c0519] text-[#f87171] border border-rose-900/60 font-mono shadow-[0_0_8px_rgba(248,113,113,0.15)]">
+▼ -0.002 (-0.85%)
+</span>
+</div>
+<!-- Breakdown Sub-panel -->
+<div class="bg-[#0b111e] p-3 rounded border border-[#1f2b3c] flex flex-col gap-1.5 text-xs font-mono">
+<div class="flex items-center justify-between text-slate-400">
+<span class="font-sans">手續費前試算</span>
+<span class="text-slate-300" id="jpy-gross-display">467,290 JPY</span>
+</div>
+<div class="flex items-center justify-between text-slate-400">
+<span class="font-sans flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>預估手續費
+</span>
+<span class="text-rose-400" id="jpy-fee-display">- 0 JPY</span>
+</div>
+</div>
+<!-- Net Amount Highlight -->
+<div class="pt-2 border-t border-[#1f2b3c] flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-blue-300 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]"></span>
+實際到手金額 (Net Amount)
+</span>
+<span class="text-[10px] uppercase font-mono px-1.5 py-0.2 rounded bg-emerald-950/70 text-[#34d399] border border-emerald-800/60">實付/實收</span>
+</div>
+<div class="flex items-baseline justify-end gap-1 mt-1 text-right">
+<span class="text-3xl font-bold text-white tabular-nums tracking-tight font-mono" data-current-val="467290" id="jpy-result-value">467,290</span>
+<span class="text-xs font-bold text-blue-400 ml-1 font-mono" id="jpy-result-unit">JPY</span>
+</div>
+</div>
+</div>
+<!-- USD Card -->
+<div class="bg-[#131c2e] p-5 rounded-lg border border-[#223048] flex flex-col justify-between gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:border-slate-500 transition-colors group">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<span aria-hidden="true" class="text-2xl leading-none">🇺🇸</span>
+<div>
+<div class="text-sm font-bold text-white group-hover:text-blue-300 transition-colors">美金 (USD)</div>
+<div class="text-xs text-slate-400 tabular-nums font-mono">1 USD = 32.450 TWD</div>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-[#064e3b] text-[#34d399] border border-emerald-900/60 font-mono shadow-[0_0_8px_rgba(52,211,153,0.15)]">
+▲ +0.12 (+0.37%)
+</span>
+</div>
+<!-- Breakdown Sub-panel -->
+<div class="bg-[#0b111e] p-3 rounded border border-[#1f2b3c] flex flex-col gap-1.5 text-xs font-mono">
+<div class="flex items-center justify-between text-slate-400">
+<span class="font-sans">手續費前試算</span>
+<span class="text-slate-300" id="usd-gross-display">3,081.66 USD</span>
+</div>
+<div class="flex items-center justify-between text-slate-400">
+<span class="font-sans flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>預估手續費
+</span>
+<span class="text-rose-400" id="usd-fee-display">- 0.00 USD</span>
+</div>
+</div>
+<!-- Net Amount Highlight -->
+<div class="pt-2 border-t border-[#1f2b3c] flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-blue-300 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]"></span>
+實際到手金額 (Net Amount)
+</span>
+<span class="text-[10px] uppercase font-mono px-1.5 py-0.2 rounded bg-emerald-950/70 text-[#34d399] border border-emerald-800/60">實付/實收</span>
+</div>
+<div class="flex items-baseline justify-end gap-1 mt-1 text-right">
+<span class="text-3xl font-bold text-white tabular-nums tracking-tight font-mono" data-current-val="3081.66" id="usd-result-value">3,081.66</span>
+<span class="text-xs font-bold text-blue-400 ml-1 font-mono" id="usd-result-unit">USD</span>
+</div>
+</div>
+</div>
+<!-- CNY Card -->
+<div class="bg-[#131c2e] p-5 rounded-lg border border-[#223048] flex flex-col justify-between gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:border-slate-500 transition-colors group">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<span aria-hidden="true" class="text-2xl leading-none">🇨🇳</span>
+<div>
+<div class="text-sm font-bold text-white group-hover:text-blue-300 transition-colors">人民幣 (CNY)</div>
+<div class="text-xs text-slate-400 tabular-nums font-mono">1 CNY = 4.480 TWD</div>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-[#064e3b] text-[#34d399] border border-emerald-900/60 font-mono shadow-[0_0_8px_rgba(52,211,153,0.15)]">
+▲ +0.015 (+0.34%)
+</span>
+</div>
+<!-- Breakdown Sub-panel -->
+<div class="bg-[#0b111e] p-3 rounded border border-[#1f2b3c] flex flex-col gap-1.5 text-xs font-mono">
+<div class="flex items-center justify-between text-slate-400">
+<span class="font-sans">手續費前試算</span>
+<span class="text-slate-300" id="cny-gross-display">22,321.43 CNY</span>
+</div>
+<div class="flex items-center justify-between text-slate-400">
+<span class="font-sans flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>預估手續費
+</span>
+<span class="text-rose-400" id="cny-fee-display">- 0.00 CNY</span>
+</div>
+</div>
+<!-- Net Amount Highlight -->
+<div class="pt-2 border-t border-[#1f2b3c] flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-blue-300 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]"></span>
+實際到手金額 (Net Amount)
+</span>
+<span class="text-[10px] uppercase font-mono px-1.5 py-0.2 rounded bg-emerald-950/70 text-[#34d399] border border-emerald-800/60">實付/實收</span>
+</div>
+<div class="flex items-baseline justify-end gap-1 mt-1 text-right">
+<span class="text-3xl font-bold text-white tabular-nums tracking-tight font-mono" data-current-val="22321.43" id="cny-result-value">22,321.43</span>
+<span class="text-xs font-bold text-blue-400 ml-1 font-mono" id="cny-result-unit">CNY</span>
+</div>
+</div>
+</div>
+</div></section>
+</div>
+</div>
+<script>
+  (function () {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Smooth ticker / count-up animation function
+    function animateValue(element, start, end, duration, decimals, prefix = '', suffix = '') {
+      if (!element) return;
+      if (prefersReducedMotion || duration <= 0) {
+        element.textContent = prefix + end.toLocaleString('en-US', {
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals
+        }) + suffix;
+        element.dataset.currentVal = end;
+        return;
+      }
+
+      if (element._animId) {
+        cancelAnimationFrame(element._animId);
+      }
+
+      const startTime = performance.now();
+      const change = end - start;
+
+      // easeOutExpo
+      function easeOutExpo(t) {
+        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      }
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = easeOutExpo(progress);
+        const current = start + (change * ease);
+
+        element.textContent = prefix + current.toLocaleString('en-US', {
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals
+        }) + suffix;
+
+        if (progress < 1) {
+          element._animId = requestAnimationFrame(step);
+        } else {
+          element.textContent = prefix + end.toLocaleString('en-US', {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals
+          }) + suffix;
+          element.dataset.currentVal = end;
+          element._animId = null;
+        }
+      }
+
+      element._animId = requestAnimationFrame(step);
+    }
+
+    const rates = {
+      JPY: { rate: 0.2140, decimals: 0, label: 'JPY' },
+      USD: { rate: 32.450, decimals: 2, label: 'USD' },
+      CNY: { rate: 4.480, decimals: 2, label: 'CNY' }
+    };
+
+    let direction = 'TWD_TO_FX';
+    let currentAmount = 100000;
+    let chartCurrency = 'JPY';
+    let chartRange = '1W';
+    let tableCurrency = 'JPY';
+    let tableRateType = 'spotSell';
+    let searchQuery = '';
+    let selectedBankCode = '808'; // Default to first/highlighted bank
+
+    const amountInput = document.getElementById('twd-amount-input');
+    const dirTwdToFxBtn = document.getElementById('dir-twd-to-fx');
+    const dirFxToTwdBtn = document.getElementById('dir-fx-to-twd');
+    const quickAmtBtns = document.querySelectorAll('.quick-amt-btn');
+
+    function formatNumber(num, decimals) {
+      return num.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+      });
+    }
+
+    function updateConverter(animate = true) {
+      const prefix = document.getElementById('input-currency-prefix');
+      const inputLabel = document.getElementById('amount-input-label');
+
+      if (direction === 'TWD_TO_FX') {
+        prefix.textContent = 'NT$';
+        inputLabel.textContent = '輸入金額 (新台幣 TWD)';
+      } else {
+        prefix.textContent = '外幣';
+        inputLabel.textContent = '輸入金額 (外幣單位)';
+      }
+
+      ['JPY', 'USD', 'CNY'].forEach(curr => {
+        const lower = curr.toLowerCase();
+        const valEl = document.getElementById(`${lower}-result-value`);
+        const unitEl = document.getElementById(`${lower}-result-unit`);
+        const labelEl = document.getElementById(`${lower}-result-label`);
+
+        let targetVal = 0;
+        let decimals = 0;
+
+        if (direction === 'TWD_TO_FX') {
+          targetVal = currentAmount / rates[curr].rate;
+          decimals = rates[curr].decimals;
+          unitEl.textContent = curr;
+          labelEl.textContent = '約可兌換';
+        } else {
+          targetVal = currentAmount * rates[curr].rate;
+          decimals = 0;
+          unitEl.textContent = 'TWD';
+          labelEl.textContent = '折合新台幣';
+        }
+
+        const prevVal = parseFloat(valEl.dataset.currentVal) || 0;
+        if (animate) {
+          animateValue(valEl, prevVal, targetVal, 400, decimals);
+        } else {
+          valEl.textContent = formatNumber(targetVal, decimals);
+          valEl.dataset.currentVal = targetVal;
+        }
+      });
+
+      renderBankTable(animate);
+    }
+
+    if (amountInput) {
+      amountInput.addEventListener('input', (e) => {
+        const raw = e.target.value.replace(/[^0-9]/g, '');
+        currentAmount = raw ? parseInt(raw, 10) : 0;
+        e.target.value = currentAmount.toLocaleString('en-US');
+        quickAmtBtns.forEach(btn => {
+          const val = parseInt(btn.dataset.quickAmount, 10);
+          if (val === currentAmount) {
+            btn.className = 'quick-amt-btn px-3 py-2 text-xs font-semibold bg-blue-600 text-white border border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.35)] rounded transition-colors';
+          } else {
+            btn.className = 'quick-amt-btn px-3 py-2 text-xs font-medium bg-[#0b111e] text-slate-300 hover:bg-blue-600 hover:text-white border border-[#2a3b58] rounded transition-colors';
+          }
+        });
+        updateConverter(false);
+      });
+    }
+
+    quickAmtBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentAmount = parseInt(btn.dataset.quickAmount, 10);
+        if (amountInput) amountInput.value = currentAmount.toLocaleString('en-US');
+        quickAmtBtns.forEach(b => {
+          b.className = 'quick-amt-btn px-3 py-2 text-xs font-medium bg-[#0b111e] text-slate-300 hover:bg-blue-600 hover:text-white border border-[#2a3b58] rounded transition-colors';
+        });
+        btn.className = 'quick-amt-btn px-3 py-2 text-xs font-semibold bg-blue-600 text-white border border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.35)] rounded transition-colors';
+        updateConverter(true);
+      });
+    });
+
+    if (dirTwdToFxBtn) {
+      dirTwdToFxBtn.addEventListener('click', () => {
+        direction = 'TWD_TO_FX';
+        dirTwdToFxBtn.className = 'px-3.5 py-1.5 text-xs font-semibold rounded bg-blue-600 text-white transition-all shadow-[0_0_12px_rgba(59,130,246,0.35)]';
+        dirFxToTwdBtn.className = 'px-3.5 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-slate-200 transition-colors';
+        updateConverter(true);
+      });
+    }
+
+    if (dirFxToTwdBtn) {
+      dirFxToTwdBtn.addEventListener('click', () => {
+        direction = 'FX_TO_TWD';
+        dirFxToTwdBtn.className = 'px-3.5 py-1.5 text-xs font-semibold rounded bg-blue-600 text-white transition-all shadow-[0_0_12px_rgba(59,130,246,0.35)]';
+        dirTwdToFxBtn.className = 'px-3.5 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-slate-200 transition-colors';
+        updateConverter(true);
+      });
+    }
+
+    // Refresh rate monitor listener
+    const refreshBtn = document.getElementById('refresh-rate-btn');
+    const refreshIcon = document.getElementById('refresh-icon');
+    const refreshText = document.getElementById('refresh-btn-text');
+    const monitorTimeEl = document.getElementById('monitor-update-time');
+    const headerTimeEl = document.getElementById('header-update-time');
+
+    if (refreshBtn) {
+      refreshBtn.addEventListener('click', () => {
+        refreshIcon.classList.add('rotating-refresh');
+        refreshText.textContent = '更新中...';
+        refreshBtn.classList.add('opacity-80', 'pointer-events-none');
+
+        setTimeout(() => {
+          refreshIcon.classList.remove('rotating-refresh');
+          refreshText.textContent = '已更新';
+
+          const now = new Date();
+          const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+          if (monitorTimeEl) monitorTimeEl.textContent = timeStr;
+          if (headerTimeEl) headerTimeEl.textContent = `最後更新：${timeStr}`;
+
+          // Ticker re-trigger on monitor cards
+          document.querySelectorAll('.monitor-rate-val').forEach(el => {
+            const base = parseFloat(el.dataset.base);
+            const dec = base > 10 ? 3 : (base < 1 ? 4 : 3);
+            const flicker = (Math.random() - 0.5) * (base * 0.0008);
+            const target = base + flicker;
+            animateValue(el, base * 0.998, target, 400, dec);
+          });
+
+          // Also trigger subtle update on table and chart
+          renderChart(true);
+          renderBankTable(true);
+
+          setTimeout(() => {
+            refreshText.textContent = '立即刷新';
+            refreshBtn.classList.remove('opacity-80', 'pointer-events-none');
+          }, 800);
+        }, 650);
+      });
+    }
+
+    // Chart Data
+    const chartData = {
+      JPY: {
+        name: '日幣 (JPY/TWD) 即期賣出走勢',
+        '1D': { sub: '今日盤中', yLabels: ['0.2155', '0.2148', '0.2140', '0.2133', '0.2125'], pts: [70, 88, 105, 95, 120, 132, 125], high: 0.2149, low: 0.2132, avg: 0.2141, chg: -0.28, neg: true },
+        '1W': { sub: '近 7 日區間', yLabels: ['0.2180', '0.2165', '0.2150', '0.2135', '0.2120'], pts: [110, 92, 135, 80, 120, 148, 140], high: 0.2162, low: 0.2134, avg: 0.2148, chg: -0.85, neg: true },
+        '1M': { sub: '近 30 日區間', yLabels: ['0.2210', '0.2185', '0.2160', '0.2135', '0.2110'], pts: [55, 78, 65, 110, 140, 125, 152], high: 0.2195, low: 0.2128, avg: 0.2159, chg: -1.42, neg: true }
+      },
+      USD: {
+        name: '美金 (USD/TWD) 即期賣出走勢',
+        '1D': { sub: '今日盤中', yLabels: ['32.60', '32.52', '32.45', '32.38', '32.30'], pts: [145, 130, 118, 105, 92, 85, 78], high: 32.480, low: 32.350, avg: 32.420, chg: 0.37, neg: false },
+        '1W': { sub: '近 7 日區間', yLabels: ['32.70', '32.55', '32.40', '32.25', '32.10'], pts: [155, 140, 128, 135, 105, 88, 72], high: 32.520, low: 32.180, avg: 32.360, chg: 0.68, neg: false },
+        '1M': { sub: '近 30 日區間', yLabels: ['32.80', '32.60', '32.40', '32.20', '32.00'], pts: [170, 150, 130, 145, 110, 95, 65], high: 32.580, low: 32.050, avg: 32.310, chg: 1.15, neg: false }
+      },
+      CNY: {
+        name: '人民幣 (CNY/TWD) 即期賣出走勢',
+        '1D': { sub: '今日盤中', yLabels: ['4.510', '4.495', '4.480', '4.465', '4.450'], pts: [130, 122, 115, 120, 105, 98, 92], high: 4.488, low: 4.462, avg: 4.476, chg: 0.34, neg: false },
+        '1W': { sub: '近 7 日區間', yLabels: ['4.520', '4.500', '4.480', '4.460', '4.440'], pts: [142, 130, 118, 125, 110, 95, 88], high: 4.492, low: 4.452, avg: 4.474, chg: 0.45, neg: false },
+        '1M': { sub: '近 30 日區間', yLabels: ['4.540', '4.510', '4.480', '4.450', '4.420'], pts: [158, 145, 132, 120, 105, 112, 85], high: 4.505, low: 4.438, avg: 4.471, chg: 0.82, neg: false }
+      }
+    };
+
+    function renderChart(animate = true) {
+      const d = chartData[chartCurrency][chartRange];
+      document.getElementById('chart-title').textContent = chartData[chartCurrency].name;
+      document.getElementById('chart-subtitle').textContent = d.sub;
+
+      const yGroup = document.getElementById('chart-y-labels');
+      const yTexts = yGroup.querySelectorAll('text');
+      d.yLabels.forEach((lbl, idx) => {
+        if (yTexts[idx]) yTexts[idx].textContent = lbl;
+      });
+
+      const xs = [56, 163, 270, 377, 484, 591, 700];
+      const lineCmds = d.pts.map((y, i) => `${i === 0 ? 'M' : 'L'}${xs[i]},${y}`).join(' ');
+      const areaCmds = `${lineCmds} L700,200 L56,200 Z`;
+
+      document.getElementById('chart-line-path').setAttribute('d', lineCmds);
+      document.getElementById('chart-area-path').setAttribute('d', areaCmds);
+
+      const ptsGroup = document.getElementById('chart-points');
+      const circles = ptsGroup.querySelectorAll('circle');
+      d.pts.forEach((y, i) => {
+        if (circles[i]) circles[i].setAttribute('cy', y);
+      });
+
+      const dec = chartCurrency === 'JPY' ? 4 : 3;
+
+      const highEl = document.getElementById('metric-high');
+      const lowEl = document.getElementById('metric-low');
+      const avgEl = document.getElementById('metric-avg');
+      const chgEl = document.getElementById('metric-change');
+
+      const prevHigh = parseFloat(highEl.dataset.currentVal) || (d.high * 0.98);
+      const prevLow = parseFloat(lowEl.dataset.currentVal) || (d.low * 1.02);
+      const prevAvg = parseFloat(avgEl.dataset.currentVal) || (d.avg * 0.99);
+      const prevChg = parseFloat(chgEl.dataset.currentVal) || 0;
+
+      if (animate) {
+        animateValue(highEl, prevHigh, d.high, 400, dec);
+        animateValue(lowEl, prevLow, d.low, 400, dec);
+        animateValue(avgEl, prevAvg, d.avg, 400, dec);
+        animateValue(chgEl, prevChg, d.chg, 400, 2, d.chg > 0 ? '+' : '', '%');
+      } else {
+        highEl.textContent = d.high.toFixed(dec);
+        highEl.dataset.currentVal = d.high;
+        lowEl.textContent = d.low.toFixed(dec);
+        lowEl.dataset.currentVal = d.low;
+        avgEl.textContent = d.avg.toFixed(dec);
+        avgEl.dataset.currentVal = d.avg;
+        chgEl.textContent = (d.chg > 0 ? '+' : '') + d.chg.toFixed(2) + '%';
+        chgEl.dataset.currentVal = d.chg;
+      }
+
+      chgEl.className = `text-xl font-bold tabular-nums mt-1 font-mono ${d.neg ? 'text-[#f87171]' : 'text-[#34d399]'}`;
+    }
+
+    document.querySelectorAll('.chart-curr-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        chartCurrency = btn.dataset.chartCurrency;
+        document.querySelectorAll('.chart-curr-btn').forEach(b => {
+          b.className = 'chart-curr-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors';
+        });
+        btn.className = 'chart-curr-btn px-3 py-1.5 text-xs font-semibold rounded bg-blue-600 text-white transition-all shadow-[0_0_10px_rgba(59,130,246,0.35)]';
+        renderChart(true);
+      });
+    });
+
+    document.querySelectorAll('.chart-range-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        chartRange = btn.dataset.chartRange;
+        document.querySelectorAll('.chart-range-btn').forEach(b => {
+          b.className = 'chart-range-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors';
+        });
+        btn.className = 'chart-range-btn px-3 py-1.5 text-xs font-semibold rounded bg-[#182236] text-white border border-[#2a3b58] shadow-sm transition-colors';
+        renderChart(true);
+      });
+    });
+
+    // Bank Comparison Data
+    const banksData = {
+      JPY: [
+        { name: '台灣銀行', code: '004', cashBuy: 0.2055, cashSell: 0.2165, spotBuy: 0.2102, spotSell: 0.2140 },
+        { name: '玉山銀行', code: '808', cashBuy: 0.2058, cashSell: 0.2160, spotBuy: 0.2105, spotSell: 0.2136 },
+        { name: '國泰世華', code: '013', cashBuy: 0.2052, cashSell: 0.2162, spotBuy: 0.2101, spotSell: 0.2138 },
+        { name: '中國信託', code: '822', cashBuy: 0.2050, cashSell: 0.2168, spotBuy: 0.2100, spotSell: 0.2142 },
+        { name: '台北富邦', code: '012', cashBuy: 0.2054, cashSell: 0.2164, spotBuy: 0.2103, spotSell: 0.2139 },
+        { name: '台新銀行', code: '812', cashBuy: 0.2056, cashSell: 0.2161, spotBuy: 0.2104, spotSell: 0.2137 },
+        { name: '兆豐銀行', code: '017', cashBuy: 0.2053, cashSell: 0.2163, spotBuy: 0.2102, spotSell: 0.2141 },
+        { name: '第一銀行', code: '007', cashBuy: 0.2051, cashSell: 0.2166, spotBuy: 0.2099, spotSell: 0.2143 }
+      ],
+      USD: [
+        { name: '台灣銀行', code: '004', cashBuy: 32.080, cashSell: 32.650, spotBuy: 32.350, spotSell: 32.450 },
+        { name: '玉山銀行', code: '808', cashBuy: 32.100, cashSell: 32.620, spotBuy: 32.370, spotSell: 32.425 },
+        { name: '國泰世華', code: '013', cashBuy: 32.090, cashSell: 32.640, spotBuy: 32.360, spotSell: 32.435 },
+        { name: '中國信託', code: '822', cashBuy: 32.070, cashSell: 32.660, spotBuy: 32.340, spotSell: 32.460 },
+        { name: '台北富邦', code: '012', cashBuy: 32.085, cashSell: 32.630, spotBuy: 32.355, spotSell: 32.440 },
+        { name: '台新銀行', code: '812', cashBuy: 32.095, cashSell: 32.615, spotBuy: 32.365, spotSell: 32.430 },
+        { name: '兆豐銀行', code: '017', cashBuy: 32.075, cashSell: 32.645, spotBuy: 32.350, spotSell: 32.445 },
+        { name: '第一銀行', code: '007', cashBuy: 32.065, cashSell: 32.655, spotBuy: 32.335, spotSell: 32.455 }
+      ],
+      CNY: [
+        { name: '台灣銀行', code: '004', cashBuy: 4.380, cashSell: 4.520, spotBuy: 4.440, spotSell: 4.480 },
+        { name: '玉山銀行', code: '808', cashBuy: 4.385, cashSell: 4.515, spotBuy: 4.445, spotSell: 4.475 },
+        { name: '國泰世華', code: '013', cashBuy: 4.382, cashSell: 4.518, spotBuy: 4.442, spotSell: 4.478 },
+        { name: '中國信託', code: '822', cashBuy: 4.375, cashSell: 4.525, spotBuy: 4.438, spotSell: 4.484 },
+        { name: '台北富邦', code: '012', cashBuy: 4.380, cashSell: 4.519, spotBuy: 4.441, spotSell: 4.479 },
+        { name: '台新銀行', code: '812', cashBuy: 4.384, cashSell: 4.516, spotBuy: 4.444, spotSell: 4.476 },
+        { name: '兆豐銀行', code: '017', cashBuy: 4.378, cashSell: 4.522, spotBuy: 4.440, spotSell: 4.482 },
+        { name: '第一銀行', code: '007', cashBuy: 4.376, cashSell: 4.524, spotBuy: 4.436, spotSell: 4.485 }
+      ]
+    };
+
+    function renderBankTable(animate = true) {
+      const tbody = document.getElementById('bank-table-body');
+      const headerEl = document.getElementById('calc-col-header');
+      if (headerEl) headerEl.textContent = `試算金額 (${currentAmount.toLocaleString('en-US')} TWD)`;
+
+      const isSell = tableRateType === 'spotSell' || tableRateType === 'cashSell';
+      const list = banksData[tableCurrency]
+        .filter(b => b.name.includes(searchQuery) || b.code.includes(searchQuery))
+        .slice()
+        .sort((a, b) => isSell ? a[tableRateType] - b[tableRateType] : b[tableRateType] - a[tableRateType]);
+
+      // If selectedBankCode is not in list, auto fallback to first
+      if (list.length > 0 && !list.some(b => b.code === selectedBankCode)) {
+        selectedBankCode = list[0].code;
+      }
+
+      const bestRate = list.length > 0 ? list[0][tableRateType] : 0;
+      const rateDecimals = tableCurrency === 'JPY' ? 4 : 3;
+      const amtDecimals = tableCurrency === 'JPY' ? 0 : 2;
+
+      tbody.innerHTML = list.map((b, idx) => {
+        const isBest = idx === 0;
+        const isSelected = b.code === selectedBankCode;
+        const calcVal = currentAmount / b[tableRateType];
+        const diff = Math.abs(b[tableRateType] - bestRate).toFixed(rateDecimals);
+
+        // Active/Selected styles with cyber pulse glow & electric blue gradient
+        const selectedClasses = 'bank-row-selected bg-gradient-to-r from-blue-950/80 via-blue-900/40 to-blue-950/20 border-l-[5px] border-l-blue-400 ring-1 ring-blue-500/50';
+        const unselectedClasses = isBest 
+          ? 'bg-blue-950/20 hover:bg-[#18263f] border-l-4 border-l-transparent' 
+          : (idx % 2 === 0 ? 'bg-[#131c2e] hover:bg-[#1a263d] border-l-4 border-l-transparent' : 'bg-[#101827] hover:bg-[#1a263d] border-l-4 border-l-transparent');
+
+        return `
+          <tr class="bank-row cursor-pointer transition-all duration-200 select-none ${isSelected ? selectedClasses : unselectedClasses}" data-bank-code="${b.code}">
+            <td class="py-3.5 px-4 font-medium whitespace-nowrap text-white">
+              <div class="flex items-center gap-2.5">
+                <span class="w-4 h-4 rounded-full flex items-center justify-center shrink-0 transition-colors ${isSelected ? 'bg-blue-500 text-white shadow-[0_0_12px_rgba(59,130,246,1)] ring-1 ring-blue-300' : 'bg-[#1b263b] text-slate-500 border border-[#2a3b58]'}">
+                  <span class="material-symbols-outlined text-[12px] font-bold ${isSelected ? 'inline-block' : 'hidden'}">check</span>
+                </span>
+                <span class="text-xs ${isSelected ? 'text-blue-300 font-semibold' : 'text-slate-400'} font-mono">${b.code}</span>
+                <span class="${isSelected ? 'text-blue-100 font-bold drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]' : ''}">${b.name}</span>
+                ${isSelected ? '<span class="text-[10px] uppercase font-semibold tracking-wider px-1.5 py-0.5 rounded bg-blue-500/25 text-blue-200 border border-blue-400/50 shadow-[0_0_8px_rgba(59,130,246,0.35)]">已選中</span>' : ''}
+              </div>
+            </td>
+            <td class="py-3.5 px-4 text-right font-mono ${tableRateType === 'cashBuy' ? 'font-bold text-blue-400' : 'text-slate-300'}">${b.cashBuy.toFixed(rateDecimals)}</td>
+            <td class="py-3.5 px-4 text-right font-mono ${tableRateType === 'cashSell' ? 'font-bold text-blue-400' : 'text-slate-300'}">${b.cashSell.toFixed(rateDecimals)}</td>
+            <td class="py-3.5 px-4 text-right font-mono ${tableRateType === 'spotBuy' ? 'font-bold text-blue-400' : 'text-slate-300'}">${b.spotBuy.toFixed(rateDecimals)}</td>
+            <td class="py-3.5 px-4 text-right font-mono ${tableRateType === 'spotSell' ? 'font-bold text-blue-400' : 'text-slate-300'}">${b.spotSell.toFixed(rateDecimals)}</td>
+            <td class="py-3.5 px-4 text-right font-semibold text-white font-mono">
+              <span class="bank-calc-num" data-val="${calcVal}">${formatNumber(calcVal, amtDecimals)}</span> ${tableCurrency}
+            </td>
+            <td class="py-3.5 px-4 text-right whitespace-nowrap">
+              ${isBest
+                ? '<span class="inline-block px-2.5 py-0.5 text-xs font-semibold rounded bg-blue-600 text-white shadow-[0_0_10px_rgba(59,130,246,0.4)]">最划算</span>'
+                : `<span class="text-xs text-slate-400 font-mono">差 ${diff}</span>`
+              }
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      // Bind row click event listeners
+      tbody.querySelectorAll('.bank-row').forEach(row => {
+        row.addEventListener('click', () => {
+          const code = row.dataset.bankCode;
+          if (selectedBankCode === code) return;
+          selectedBankCode = code;
+          renderBankTable(false);
+        });
+      });
+
+      if (animate && !prefersReducedMotion) {
+        tbody.querySelectorAll('.bank-calc-num').forEach(el => {
+          const target = parseFloat(el.dataset.val);
+          const startVal = target * 0.85;
+          animateValue(el, startVal, target, 400, amtDecimals);
+        });
+      }
+    }
+
+    document.querySelectorAll('.table-curr-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        tableCurrency = btn.dataset.tableCurrency;
+        document.querySelectorAll('.table-curr-btn').forEach(b => {
+          b.className = 'table-curr-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors';
+        });
+        btn.className = 'table-curr-btn px-3 py-1.5 text-xs font-semibold rounded bg-blue-600 text-white transition-all shadow-[0_0_8px_rgba(59,130,246,0.35)]';
+        renderBankTable(true);
+      });
+    });
+
+    document.querySelectorAll('.rate-type-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        tableRateType = btn.dataset.rateType;
+        document.querySelectorAll('.rate-type-btn').forEach(b => {
+          b.className = 'rate-type-btn px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-white transition-colors';
+        });
+        btn.className = 'rate-type-btn px-3 py-1.5 text-xs font-semibold rounded bg-[#182236] text-white border border-[#2a3b58] transition-colors';
+        renderBankTable(true);
+      });
+    });
+
+    const searchInput = document.getElementById('bank-search-input');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.trim();
+        renderBankTable(false);
+      });
+    }
+
+    // Theme toggle button click listener for visual feedback
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const icon = themeBtn.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.classList.add('rotate-180');
+          setTimeout(() => icon.classList.remove('rotate-180'), 400);
+        }
+      });
+    }
+
+    // Initial render with count-up ticker animation
+    updateConverter(true);
+    renderChart(true);
+  })();
+</script></main><footer class="w-full bg-[#0d121f] border-t border-[#223048] py-8"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400 text-xs"><span>© 2025 TWDFX 匯率通. 台幣即時匯率與銀行比價系統.</span><span>匯率資訊僅供參考，實際交易以各銀行牌告為準</span></div></footer>
+
+
+</body></html>
